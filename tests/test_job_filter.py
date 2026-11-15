@@ -1,7 +1,6 @@
 from job_filter import get_jobs_by_salary
 import pytest
 
-
 # Positive tests
 
 @pytest.mark.parametrize(
@@ -24,6 +23,19 @@ def test_salary_filter(salary, min_salary, expected):
 
 def test_empty_jobs_list():
     assert get_jobs_by_salary([], 50000) == []
+
+def test_jobs_with_various_salaries():
+    jobs = [
+        {"title": "QA Engineer", "salary": 45000},
+        {"title": "SDET", "salary": 65000},
+        {"title": "Python Developer", "salary": 70000},
+        {"title": "Manual Tester", "salary": 40000}
+    ]
+    expected = [
+        {"title": "SDET", "salary": 65000},
+        {"title": "Python Developer", "salary": 70000}
+    ]
+    assert get_jobs_by_salary(jobs, 60000) == expected
 
 
 # Negative tests
