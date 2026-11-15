@@ -1,3 +1,5 @@
+# Job filtering utilities
+
 def get_jobs_by_salary(jobs, min_salary):
     if not isinstance(jobs, list):
         raise ValueError("Jobs must be a list")
